@@ -91,16 +91,12 @@ class Engine {
     }
 
     draw() {
-        if (this.ctxClearScreen) {
+        if (this.gameObjectType.ctxClearScreen) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
         this.gameObjectType.draw();
 
         this.addText(`${this.fps}`, canvas.width - 85, 20, 14, "black");
-        for (let objIntte of this.objs) {
-            if (Globals.isDebug()) {
-            }
-        }
     }
 
     addText(t, x, y, size, color) {
@@ -163,6 +159,7 @@ class Engine {
     }
 
     calculateFPS() {
+        this.fpsHelper = this.fpsHelper || 0;
         this.fpsHelper++;
         const currentTime = performance.now();
 

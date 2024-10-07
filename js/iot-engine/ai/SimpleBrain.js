@@ -1,15 +1,11 @@
-// js/iot-engine/ai/SimpleBrain.js
-
 class SimpleBrain {
     constructor() {
-        // Initialize TensorFlow.js model
         this.model = tf.sequential();
         this.model.add(tf.layers.dense({ inputShape: [6], units: 8, activation: 'relu' }));
         this.model.add(tf.layers.dense({ units: 4, activation: 'relu' }));
-        this.model.add(tf.layers.dense({ units: 2, activation: 'tanh' })); // Outputs: [turning angle, acceleration]
+        this.model.add(tf.layers.dense({ units: 2, activation: 'tanh' }));
         this.model.compile({ optimizer: 'adam', loss: 'meanSquaredError' });
 
-        // Training data
         this.trainingInputs = [];
         this.trainingOutputs = [];
     }
@@ -26,24 +22,16 @@ class SimpleBrain {
         this.trainingInputs.push(inputs);
         this.trainingOutputs.push(outputs);
 
-        // Limit training data size
         if (this.trainingInputs.length > 1000) {
             this.trainingInputs.shift();
             this.trainingOutputs.shift();
         }
     }
 
-    async train() {
-        if (this.trainingInputs.length < 10) return; // Not enough data to train
-
-        const xs = tf.tensor2d(this.trainingInputs);
-        const ys = tf.tensor2d(this.trainingOutputs);
-        await this.model.fit(xs, ys, {
-            epochs: 10,
-            batchSize: 32,
-            shuffle: true,
-        });
-        tf.dispose([xs, ys]);
+    setWeights(weights) {
+        const tensorWeights = weights.map(w => tf.tensor(w));
+        this.model.setWeights(tensorWeights);
+        tensorWeights.forEach(t => t.dispose());
     }
 
     clone() {

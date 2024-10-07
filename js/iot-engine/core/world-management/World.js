@@ -1,6 +1,6 @@
 class World {
     constructor(name) {
-        this.name = name
+        this.name = name;
         this.BODIES = [];
         this.COLLISIONS = [];
 
