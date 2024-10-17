@@ -1,4 +1,4 @@
-class FlatTransform {
+export class FlatTransform {
     PositionX;
     PositionY;
     Sin;
@@ -21,7 +21,7 @@ class FlatTransform {
     }
 }
 
-class FlatManifold {
+export class FlatManifold {
     constructor(bodyA, bodyB, normal, depth, contact1, contact2, contactCount) {
         this.BodyA = bodyA;
         this.BodyB = bodyB;

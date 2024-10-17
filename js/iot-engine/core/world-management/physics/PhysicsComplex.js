@@ -1,4 +1,12 @@
-class CollData {
+import { HashTable } from '../../../helpers/HashSet.js';
+import { MathHelper } from '../../../helpers/MathHelper.js';
+import { CollisionGrid } from '/js/iot-engine/core/world-management/physics/helpers/CollisionGrid.js';
+import { Vector } from '../../../helpers/Vector.js';
+import { Utils } from '../../../helpers/Utils.js';
+import { Globals } from '../../../helpers/Globals.js'
+import { World } from '../../world-management/World.js'
+
+export class CollData {
     constructor(o1, o2, normal, pen, cp) {
         this.o1 = o1;
         this.o2 = o2;
@@ -56,7 +64,7 @@ class CollData {
     }
 }
 
-class PhysicsComplex {
+export class PhysicsComplex {
     closestPointOnLS(p, w1) {
         let ballToWallStart = w1.start.subtract(p);
         if (Utils.dot(w1.dir, ballToWallStart) > 0) {
@@ -253,7 +261,7 @@ class PhysicsComplex {
                     }
                 }
             }
-        };
+        }
 
         let contactVertex = this.projShapeOntoAxis(smallestAxis, vertexObj).collVertex;
         //smallestAxis.drawVec(contactVertex.x, contactVertex.y, minOverlap, "blue");

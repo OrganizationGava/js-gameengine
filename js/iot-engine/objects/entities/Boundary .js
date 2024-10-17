@@ -1,4 +1,4 @@
-class Boundary {
+export class Boundary {
     constructor(pos, width, height) {
         this.position = pos;
         this.width = width;

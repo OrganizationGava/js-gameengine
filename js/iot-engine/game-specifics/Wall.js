@@ -1,4 +1,4 @@
-class Wall extends BodyDef {
+export class Wall extends BodyDef {
     constructor(rocketFake, x1, y1, x2, y2){
         super(Wall);
         this.rocketFake = rocketFake;

@@ -1,4 +1,4 @@
-class BodyDef {
+export class BodyDef {
     constructor(instance, mass, position, speed, direction) {
 
         this.id = Utils.randomIntFromInterval(1, 5000);

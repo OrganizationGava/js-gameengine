@@ -1,6 +1,6 @@
 // roundDot.updateFieldUserInstance('shapeType', 'square');
 
-class Dot extends BasicForms {
+export class Dot extends BasicForms {
     constructor(x, y, size, shapeType = 'round') {
         super();
         this.position = new Vector(x, y);

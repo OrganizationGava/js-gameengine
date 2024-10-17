@@ -1,4 +1,6 @@
-class World {
+import { PhysicsEngine, Physics, Force } from './physics/Physics.js'
+
+export class World {
     constructor(name) {
         this.name = name;
         this.BODIES = [];

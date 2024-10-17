@@ -1,4 +1,4 @@
-class ObjLoader {
+export class ObjLoader {
     constructor(url) {
         this.url = url;
         this.mesh = new mesh();

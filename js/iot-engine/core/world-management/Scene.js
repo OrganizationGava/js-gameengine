@@ -1,5 +1,11 @@
+import { Vector } from '../../helpers/Vector.js';
+import { Utils } from '../../helpers/Utils.js';
+import { Globals } from '../../helpers/Globals.js'
+import { HashTable } from '../../helpers/HashSet.js'
+import { PhysicsComplex } from '../world-management/physics/PhysicsComplex.js'
+import { World } from '../world-management/World.js'
 
-class Scene {
+export class Scene {
     constructor(g) {
         this.game = g;
         this.map = null;

@@ -1,4 +1,4 @@
-class SoftBody {
+export class SoftBody {
     constructor(x, y, segments, spacing, stiffness) {
         this.points = [];
         this.springs = [];

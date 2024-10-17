@@ -1,4 +1,3 @@
-
 const interactionSettings = {
     rotationSensitivity: 0.004,
     scalingSensitivity: 0.5,

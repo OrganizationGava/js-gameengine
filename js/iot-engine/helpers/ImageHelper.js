@@ -1,4 +1,4 @@
-class ImageHelper {
+export class ImageHelper {
     constructor(path) {
       if (path) {
         const img = new Image();

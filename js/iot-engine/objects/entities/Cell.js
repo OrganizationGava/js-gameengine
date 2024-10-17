@@ -1,5 +1,5 @@
-
-class Cell extends BodyDef {
+import { BodyDef } from './../bodies/BodyDef';
+export class Cell extends BodyDef {
     constructor(world, trainingManager, traits = {}) {
         super(world, traits.mass || 1, traits.position || new Vector(Math.random() * canvas.width, Math.random() * canvas.height));
 
@@ -25,7 +25,7 @@ class Cell extends BodyDef {
         const mutationRate = 0.05;
         for (let trait in this.traits) {
             if (Math.random() < mutationRate) {
-                this.traits[trait] *= (1 + (Math.random() * 0.2 - 0.1)); // Mutate trait by ±10%
+                this.traits[trait] *= (1 + (Math.random() * 0.2 - 0.1));
             }
         }
     }
@@ -134,7 +134,7 @@ class Cell extends BodyDef {
         if (closestFood) {
             angleToFood = Math.atan2(closestFood.position.y - this.position.y, closestFood.position.x - this.position.x) - this.heading;
             angleToFood = ((angleToFood + Math.PI) % (2 * Math.PI)) - Math.PI;
-            angleToFood /= Math.PI; // Normalize to [-1, 1]
+            angleToFood /= Math.PI;
         }
 
         let angleToCell = 0;
@@ -142,11 +142,11 @@ class Cell extends BodyDef {
         if (closestCell) {
             angleToCell = Math.atan2(closestCell.position.y - this.position.y, closestCell.position.x - this.position.x) - this.heading;
             angleToCell = ((angleToCell + Math.PI) % (2 * Math.PI)) - Math.PI;
-            angleToCell /= Math.PI; // Normalize to [-1, 1]
+            angleToCell /= Math.PI;
             sizeRatio = closestCell.size / this.size;
         }
 
-        const lifeLevel = this.life / this.size; // Between 0 and 1
+        const lifeLevel = this.life / this.size;
 
         return [normFoodDist, angleToFood, normCellDist, angleToCell, sizeRatio, lifeLevel];
     }
@@ -177,14 +177,12 @@ class Cell extends BodyDef {
     draw() {
         if (this.isDead) return;
 
-        // Draw cell
         ctx.beginPath();
         ctx.arc(this.position.x, this.position.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
         ctx.fill();
         ctx.closePath();
 
-        // Draw heading
         ctx.beginPath();
         ctx.moveTo(this.position.x, this.position.y);
         ctx.lineTo(
@@ -195,7 +193,6 @@ class Cell extends BodyDef {
         ctx.stroke();
         ctx.closePath();
 
-        // Draw life bar
         ctx.fillStyle = 'red';
         ctx.fillRect(this.position.x - this.size, this.position.y - this.size - 10, (this.life / this.size) * (this.size * 2), 5);
     }

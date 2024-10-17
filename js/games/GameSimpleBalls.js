@@ -1,4 +1,4 @@
-class GameSimpleBalls extends Scene {
+export class GameSimpleBalls extends Scene {
     constructor() {
         Globals.setBoundaries(true);
         Globals.setCollisions(true);

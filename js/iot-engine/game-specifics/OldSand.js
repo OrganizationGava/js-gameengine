@@ -1,4 +1,4 @@
-// class Sand extends BodyDef {
+// export class Sand extends BodyDef {
 // 	constructor(rocketFake, x, y, mass, size) {
 // 		super(Sand, mass, new Vector(x, y));
 // 		this.rocketFake = rocketFake;

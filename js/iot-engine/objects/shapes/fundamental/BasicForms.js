@@ -1,5 +1,5 @@
 
-class BasicForms {
+export class BasicForms {
     constructor() {
         this.vertices = [];
 		this.edges = [];

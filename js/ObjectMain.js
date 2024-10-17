@@ -1,4 +1,4 @@
-class ObjectMain {
+export class ObjectMain {
     constructor(instance, mass, position, degrees, speed, direction) {
         this.id = Utils.randomIntFromInterval(1, 5000);
 
@@ -56,7 +56,7 @@ class ObjectMain {
         if (v == undefined)
             this.statePhysics = true;
 
-        this.statePhysics = !this.statePhysics;;
+        this.statePhysics = !this.statePhysics;
     }
 
     updateDegrees(d) {
@@ -74,7 +74,7 @@ class ObjectMain {
         }
 
         if (!Globals.isDebug()) {
-            return ;
+            
         }
 
         // var timeDifference = Date.now() - obj.currentTime ;

@@ -1,4 +1,4 @@
-class Boundary {
+export class Boundary {
   constructor(pos, w, h) {
     this.pos = pos;
     this.width = w;
@@ -19,7 +19,7 @@ const background = new Sprite(
   }
 );
 
-class MapGame {
+export class MapGame {
   constructor(rocket) {
     this.rocket = rocket;
     this.load = false;

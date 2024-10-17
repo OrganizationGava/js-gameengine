@@ -1,4 +1,4 @@
-class Camera {
+export class Camera {
   constructor(rocket, cx = 0, cy = 0) {
     this.rocket = rocket;
 

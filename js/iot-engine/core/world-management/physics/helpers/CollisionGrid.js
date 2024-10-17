@@ -1,4 +1,4 @@
-class CollisionCell {
+export class CollisionCell {
     constructor() {
         this.objects = [];
         this.objects_count = 0;
@@ -27,7 +27,7 @@ class CollisionCell {
     }
 }
 
-class CollisionGrid {
+export class CollisionGrid {
     constructor(w, h, qtd) {
         this.data = [];
         this.qtd = qtd;

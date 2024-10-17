@@ -1,5 +1,5 @@
 
-class PolygonShape extends BodyDef {
+export class PolygonShape extends BodyDef {
 	constructor(polygon, rocketFake, type, position, mass) {
 		super(PolygonShape, mass, position, null, null, null);
 

@@ -1,4 +1,4 @@
-class InputUserFieldInteractions {
+export class InputUserFieldInteractions {
     constructor(game) {
         this.game = game;
         this.fieldConfigurations = {};

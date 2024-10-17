@@ -1,4 +1,4 @@
-class ParticleNoiseObj extends ObjectMain {
+export class ParticleNoiseObj extends ObjectMain {
     constructor(flow, position) {
         super(ParticleNoiseObj, null, position, null, null, null);
 
@@ -153,7 +153,7 @@ class ParticleNoiseObj extends ObjectMain {
     // }
 }
 
-class FlowField {
+export class FlowField {
     particles = [];
     perlinNoise = null;
 
@@ -262,7 +262,7 @@ class FlowField {
     }
 }
 
-class PerlinNoise {
+export class PerlinNoise {
     flows = [];
     flow = null;
 

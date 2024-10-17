@@ -1,4 +1,4 @@
-class SimpleBrain {
+export class SimpleBrain {
     constructor() {
         this.model = tf.sequential();
         this.model.add(tf.layers.dense({ inputShape: [6], units: 8, activation: 'relu' }));
@@ -8,6 +8,9 @@ class SimpleBrain {
 
         this.trainingInputs = [];
         this.trainingOutputs = [];
+        this.worker = new Worker('js/iot-engine/ai/trainerWorker.js', { type: 'module' });
+
+
     }
 
     decide(inputs) {

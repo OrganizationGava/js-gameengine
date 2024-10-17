@@ -1,4 +1,4 @@
-class Sprite {
+export class Sprite {
     constructor({
       position,
       velocity,

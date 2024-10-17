@@ -1,4 +1,4 @@
-class Interactions {
+export class Interactions {
     constructor(canvas) {
         this.canvas = canvas;
         this.mousePos = { x: 0, y: 0 };

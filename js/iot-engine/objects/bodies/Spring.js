@@ -1,4 +1,4 @@
-class Spring {
+export class Spring {
     constructor(pointA, pointB, stiffness, length) {
         this.pointA = pointA;
         this.pointB = pointB;

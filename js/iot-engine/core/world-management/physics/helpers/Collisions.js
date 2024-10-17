@@ -1,4 +1,4 @@
-class FlatAABB {
+export class FlatAABB {
   constructor(min, max) {
       this.min = min;
       this.max = max;
@@ -10,7 +10,7 @@ class FlatAABB {
   }
 }
 
-class FlatVector {
+export class FlatVector {
   constructor(x, y) {
       this.x = x;
       this.y = y;
@@ -22,7 +22,7 @@ const aabb1 = new FlatAABB(new FlatVector(0, 0), new FlatVector(1, 1));
 const aabb2 = FlatAABB.fromCoordinates(0, 0, 1, 1);
 
 
-class Collisions {
+export class Collisions {
   constructor() {
 
   }

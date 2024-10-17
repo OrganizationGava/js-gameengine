@@ -1,7 +1,8 @@
+
 self.onmessage = async function(e) {
     const { trainingInputs, trainingOutputs } = e.data;
 
-    if (trainingInputs.length === 0) {
+    if (!trainingInputs || !trainingOutputs || trainingInputs.length === 0) {
         self.postMessage({ error: 'No training data received.' });
         return;
     }

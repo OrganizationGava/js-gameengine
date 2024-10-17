@@ -1,4 +1,4 @@
-class ShapeFactory {
+export class ShapeFactory {
     static createShape(type = null, s = null, instance = null, p = Vector.$()) {
         switch (type) {
             case 'point':
@@ -31,7 +31,7 @@ class ShapeFactory {
     }
 }
 
-class Vertex {
+export class Vertex {
     constructor(pos, pinned = false) {
         this.pinned = pinned;
         this.position = pos;
@@ -39,7 +39,7 @@ class Vertex {
     }
 }
 
-class Edge {
+export class Edge {
     constructor(p0, p1, length, width, hidden = false) {
         this.p0 = p0;
         this.p1 = p1;
@@ -49,7 +49,7 @@ class Edge {
     }
 }
 
-class Face {
+export class Face {
     constructor(path = [], color = "red") {
         this.path = path;
         this.color = color;

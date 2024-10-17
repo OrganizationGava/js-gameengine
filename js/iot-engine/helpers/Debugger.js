@@ -1,4 +1,4 @@
-class Debugger {
+export class Debugger {
     constructor() {
         // this.debugDiv = document.getElementById("debugArea");
         this.htmlBuilder();

@@ -1,4 +1,10 @@
-class Physics {
+import { HashTable } from '../../../helpers/HashSet.js';
+import { MathHelper } from '../../../helpers/MathHelper.js';
+import { Vector } from '../../../helpers/Vector.js';
+import { CollisionGrid } from '/js/iot-engine/core/world-management/physics/helpers/CollisionGrid.js';
+// import { CollisionGrid } from '/js/iot-engine/core/world-management/physics/helpers/CollisionGrid.js';
+
+export class Physics {
     constructor(obj) {
         this.obj = obj;
         this.mass = obj.mass;
@@ -23,7 +29,7 @@ class Physics {
 }
 
 
-class PhysicsEngine {
+export class PhysicsEngine {
     constructor(obj) {
         this.obj = obj;
         this.forcesHash = new HashTable();
@@ -85,7 +91,7 @@ class PhysicsEngine {
     }
 }
 
-class Force {
+export class Force {
     constructor(data) {
         this.name = data.name;
         this.type = data.type;

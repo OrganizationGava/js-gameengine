@@ -1,7 +1,14 @@
-// games/CellEvolutionGame.js
+import { Scene } from '../iot-engine/core/world-management/Scene.js';
+import { TrainingManager } from '../iot-engine/ai/TrainingManager.js';
+import { Cell } from '../iot-engine/objects/entities/Cell.js';
+import { Food } from '../iot-engine/objects/entities/Food.js';
+import { Vector } from '../iot-engine/helpers/Vector.js';
+import { Utils } from '../iot-engine/helpers/Utils.js';
+import { Globals } from '../iot-engine/helpers/Globals.js';
 
-class CellEvolutionGame extends Scene {
+export class CellEvolutionGame extends Scene {
     constructor() {
+
         Globals.setBoundaries(false);
         Globals.setCollisions(true);
         Globals.setDebug(false);

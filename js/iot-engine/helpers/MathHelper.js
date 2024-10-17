@@ -1,4 +1,4 @@
-class MathHelper {
+export class MathHelper {
     static getLinerInterpolation(finder, init, initV, max, maxV) {
         return (maxV - (initV)) / (max - init) * (finder - init) + (initV);
     }

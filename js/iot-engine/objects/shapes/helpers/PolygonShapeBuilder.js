@@ -1,4 +1,4 @@
-class PolygonShapeBuilder {
+export class PolygonShapeBuilder {
 	static createBox(position){
 		let vertices = [];
 		let edges = [];

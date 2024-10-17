@@ -1,4 +1,4 @@
-class Globals {
+export class Globals {
   static boundaries = true;
   static attractionObjects = false;
   static verifyCollisions = true;

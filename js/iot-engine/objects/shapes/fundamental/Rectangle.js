@@ -1,4 +1,4 @@
-class Rectangle extends BasicForms  {
+export class Rectangle extends BasicForms  {
 	constructor(x1, y1, x2, y2, width, angle) {
 		super();
 		// super(Box, rocketFake, null, new Vector(x1, y1), 100);

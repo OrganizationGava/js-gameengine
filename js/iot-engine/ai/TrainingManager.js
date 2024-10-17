@@ -1,4 +1,4 @@
-class TrainingManager {
+export class TrainingManager {
     constructor() {
         this.cells = [];
         this.trainInterval = 1000;

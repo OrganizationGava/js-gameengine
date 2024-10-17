@@ -1,4 +1,4 @@
-class Engine {
+export class Engine {
     fpsHelper = 0;
     fps = 60;
     startTime;
@@ -157,6 +157,32 @@ class Engine {
         this.paused = !this.paused;
         this.startLoop();
     }
+
+    // addShape(shapeType) {
+    //     const rect = canvas.getBoundingClientRect();
+    //     const midpoint = canvas.height / 2;
+    //
+    //     const x = eventshelper.mousepos.x;
+    //     const y = eventshelper.mousepos.y;
+    //
+    //     const normalizedX = x / midpoint;
+    //     const size = Utils.randomIntFromInterval(15, 40);
+    //     const mass = Utils.randomIntFromInterval(10, 10) * size / 100;
+    //
+    //     if (shapeType == "CIRCLE") {
+    //         this.lastShapeUsed = "CIRCLE";
+    //
+    //         this.addObject(new Circle(new Vector(x, y), mass, size, 0, 5, Math.random() * Math.PI * 2));
+    //     } if (shapeType == "SQUARE") {
+    //         this.lastShapeUsed = "SQUARE";
+    //
+    //         this.addObject(new Rectangle(new Vector(x, y), new Vector(this.scalar * normalizedX, 0), 1, 150, 25));
+    //     } if (shapeType == "STICK") {
+    //         this.lastShapeUsed = "STICK";
+    //
+    //         this.addObject(new Sticks(new Vector(x, y), new Vector(0, 0), 1, 150, 50));
+    //     }
+    // }
 
     calculateFPS() {
         this.fpsHelper = this.fpsHelper || 0;

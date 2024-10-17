@@ -1,4 +1,4 @@
-class Ground extends BodyDef {
+export class Ground extends BodyDef {
     constructor(rocketFake, mass, start, end) {
         super(Ground, mass, start);
         this.setBodyType(`static`);

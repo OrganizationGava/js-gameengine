@@ -1,4 +1,4 @@
-class Fixture {
+export class Fixture {
     constructor(obj = null, friction = 1) {
         this.h = 1;
         this.obj = obj;

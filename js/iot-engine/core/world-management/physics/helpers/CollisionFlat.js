@@ -1,4 +1,4 @@
-class CollisionFlat {
+export class CollisionFlat {
     static pointSegmentDistance(p, a, b) {
         let ab = FlatVector.subtract(b, a);
         let ap = FlatVector.subtract(p, a);

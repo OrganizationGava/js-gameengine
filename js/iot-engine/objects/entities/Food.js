@@ -1,14 +1,15 @@
-class Food extends BodyDef {
+import { BodyDef } from './../bodies/BodyDef';
+
+export class Food extends BodyDef {
     constructor(world, position = null) {
         const pos = position || new Vector(Math.random() * canvas.width, Math.random() * canvas.height);
-        super(world, 0, pos); // mass = 0 for static objects
+        super(world, 0, pos);
 
         this.size = 3;
         this.color = 'lime';
     }
 
     update(deltaTime, world) {
-        // Food does not need to update
     }
 
     draw() {

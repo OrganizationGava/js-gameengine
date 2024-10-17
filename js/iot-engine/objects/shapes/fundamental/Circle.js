@@ -1,4 +1,4 @@
-class Circle extends BasicForms {
+export class Circle extends BasicForms {
     constructor(position, radius) {
         super();
         this.position = position instanceof Vector ? position : new Vector(position.x, position.y); // Ensure position is a Vector

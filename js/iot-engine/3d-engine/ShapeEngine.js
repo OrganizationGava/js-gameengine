@@ -1,4 +1,4 @@
-class ShapeEngine {
+export class ShapeEngine {
     constructor(canvas, objUrl, pos, basePos) {
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");

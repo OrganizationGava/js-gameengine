@@ -1,4 +1,4 @@
-class Box extends BodyDef {
+export class Box extends BodyDef {
 	constructor(rocketFake, x1, y1, x2, y2, mass, width, angle) {
 		super();
 		this.rocketFake = rocketFake;

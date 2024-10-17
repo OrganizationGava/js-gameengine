@@ -1,4 +1,4 @@
-class Ball extends BodyDef {
+export class Ball extends BodyDef {
     constructor(rocketFake, mass, radius, position) {
         super(Ball, mass, position);
         this.setBodyType('dynamic');
