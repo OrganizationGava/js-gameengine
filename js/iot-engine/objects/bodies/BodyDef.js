@@ -1,5 +1,22 @@
-export class BodyDef {
+import { Globals } from '../../helpers/Globals.js';
+import { Vector } from '../../helpers/Vector.js'
+import { Utils } from '../../helpers/Utils.js'
+import { Physics } from '../../core/world-management/physics/Physics.js';
+import { Camera } from '../../core/world-management/scene/Camera.js';
+import { Scene } from '../../core/world-management/Scene.js';
+import { BodyDefType } from '../../objects/bodies/BodyType.js';
+import { ShapeFactory } from '../../Shared.js';
+
+
+export default class BodyDef {
     constructor(instance, mass, position, speed, direction) {
+        const canvas = Scene.getCanvas();
+        if (canvas) {
+			this.canvas = canvas;
+            this.ctx = canvas.getContext('2d');
+        } else {
+            console.error('Failed to get canvas context');
+        }
 
         this.id = Utils.randomIntFromInterval(1, 5000);
         this.currentTime = Date.now();
@@ -20,8 +37,8 @@ export class BodyDef {
         this.colorProjection = Utils.changeRedSoftness(this.color, 200);
         this.colorShadow = Utils.changeRedSoftness(this.color, 0);
 
-        ctx.strokeStyle = this.color;
-        ctx.fillStyle = this.color;
+        this.ctx.strokeStyle = this.color;
+        this.ctx.fillStyle = this.color;
 
         this.density = 1;
         this.bounce = 0;
@@ -271,3 +288,4 @@ export class BodyDef {
         return false;
     }
 }
+

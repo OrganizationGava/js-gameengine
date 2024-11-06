@@ -1,10 +1,16 @@
-export class Rectangle extends BasicForms  {
+import { Matrix } from '../../../core/world-management/physics/Matrix.js';
+import { Utils } from '../../../helpers/Utils.js';
+import { Vector } from '../../../helpers/Vector.js';
+import { BasicForms } from '../../../Shared.js';
+import { Edge, Face, Vertex } from '../helpers/ShapeFactory.js';
+
+export default class Rectangle extends BasicForms  {
 	constructor(x1, y1, x2, y2, width, angle) {
 		super();
 		// super(Box, rocketFake, null, new Vector(x1, y1), 100);
-		ctx.strokeStyle = "black";
-		ctx.fillStyle = "black";
-		ctx.strokeStyle = "black";
+		this.ctx.strokeStyle = "black";
+		this.ctx.fillStyle = "black";
+		this.ctx.strokeStyle = "black";
 
 		this.width = width;
 
@@ -14,6 +20,7 @@ export class Rectangle extends BasicForms  {
         this.dir = p2.position.subtract(p1.position).unit();
 
         this.refDir = p2.position.subtract(p1.position).unit();
+
         this.length = p2.position.subtract(p1.position).mag();
 		
 		var p3 = new Vertex( p2.position.add( this.dir.normal().mult(this.width) ) );	//329 520
@@ -57,15 +64,15 @@ export class Rectangle extends BasicForms  {
 	}
 
     draw(){
-        ctx.beginPath();
-        ctx.moveTo(this.vertices[0].position.x, this.vertices[0].position.y);
-        ctx.lineTo(this.vertices[1].position.x, this.vertices[1].position.y);
-        ctx.lineTo(this.vertices[2].position.x, this.vertices[2].position.y);
-        ctx.lineTo(this.vertices[3].position.x, this.vertices[3].position.y);
-        ctx.lineTo(this.vertices[0].position.x, this.vertices[0].position.y);
-        ctx.strokeStyle = "black";
-        ctx.stroke();
-        ctx.closePath();
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.vertices[0].position.x, this.vertices[0].position.y);
+        this.ctx.lineTo(this.vertices[1].position.x, this.vertices[1].position.y);
+        this.ctx.lineTo(this.vertices[2].position.x, this.vertices[2].position.y);
+        this.ctx.lineTo(this.vertices[3].position.x, this.vertices[3].position.y);
+        this.ctx.lineTo(this.vertices[0].position.x, this.vertices[0].position.y);
+        this.ctx.strokeStyle = "black";
+        this.ctx.stroke();
+        this.ctx.closePath();
     }
 
     getVertices(){

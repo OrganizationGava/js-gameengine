@@ -1,5 +1,9 @@
-export class ShapeFactory {
-    static createShape(type = null, s = null, instance = null, p = Vector.$()) {
+import { Vector } from '../../../helpers/Vector.js';
+import { PolygonShape } from '../../entities/PolygonShape.js';
+import { Box, Circle } from '../../../Shared.js';
+
+export default class ShapeFactory {
+    static async createShape(type = null, s = null, instance = null, p = Vector.$()) {
         switch (type) {
             case 'point':
                 return new Vertex();

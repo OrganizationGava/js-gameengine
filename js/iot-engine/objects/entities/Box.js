@@ -1,26 +1,40 @@
-export class Box extends BodyDef {
-	constructor(rocketFake, x1, y1, x2, y2, mass, width, angle) {
-		super();
-		this.rocketFake = rocketFake;
-		this.physics = new Physics(this);
+import { Physics } from '../../core/world-management/physics/Physics.js';
+import {BodyDef, Rectangle} from '../../Shared.js';
 
-		this.bounce = 0;
-		this.friction = 0.7;
+export default class Box extends BodyDef {
+    constructor(rocketFake, x1, y1, x2, y2, mass, width, angle) {
+        super();
+        this.rocketFake = rocketFake;
+        this.physics = new Physics(this);
+
+        this.bounce = 0;
+        this.friction = 0.7;
 
 		this.setBodyType('dynamic');
 
-		this.shape = new Rectangle(x1, y1, x2, y2, width, angle);
+        this.shape = new Rectangle(x1, y1, x2, y2, width, angle);
 
-		this.vertices = this.shape.vertices;
-		this.edges = this.shape.edges;
-		this.faces = this.shape.faces;
+        this.vertices = this.shape.vertices;
+        this.edges = this.shape.edges;
+        this.faces = this.shape.faces;
 
-		this.position = this.shape.getPosition();
+        this.position = this.shape.getPosition();
 
-		this.mass = mass;
-		this.inertia = this.mass * (this.shape.width ** 2 + this.shape.length ** 2) / 12;
-		this.inv_inertia = this.mass === 0 ? 0 : 1 / this.inertia;
-	}
+        this.mass = mass;
+        this.inertia = this.mass * (this.shape.width ** 2 + this.shape.length ** 2) / 12;
+        this.inv_inertia = this.mass === 0 ? 0 : 1 / this.inertia;
+
+        //  other properties using a method from BodyDef
+        this.initializeBox(this, x1, y1, x2, y2, mass, width, angle);
+    }
+
+    initializeBox(bodyDefInstance, x1, y1, x2, y2, mass, width, angle) {
+        if (typeof this.setBodyType === 'function') {
+            this.setBodyType('dynamic');
+        } else {
+            console.error('setBodyType is not a function');
+        }
+    }
 
 	draw() { this.shape.draw();	}
 
@@ -70,7 +84,7 @@ export class Box extends BodyDef {
 	updateFieldUserInstance(property, value) {
 		if (property === 'color') {
 			this.color = value;
-			ctx.fillStyle = value;
+			this.ctx.fillStyle = value;
 		} else if (property === 'width') {
 			this.shape.width = value;
 		} else if (property === 'positionX') {
@@ -170,3 +184,5 @@ export class Box extends BodyDef {
 		}
 	}
 }
+
+// export default Box;

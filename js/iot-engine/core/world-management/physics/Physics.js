@@ -2,7 +2,7 @@ import { HashTable } from '../../../helpers/HashSet.js';
 import { MathHelper } from '../../../helpers/MathHelper.js';
 import { Vector } from '../../../helpers/Vector.js';
 import { CollisionGrid } from '/js/iot-engine/core/world-management/physics/helpers/CollisionGrid.js';
-// import { CollisionGrid } from '/js/iot-engine/core/world-management/physics/helpers/CollisionGrid.js';
+import { Scene } from '../Scene.js';
 
 export class Physics {
     constructor(obj) {
@@ -36,6 +36,7 @@ export class PhysicsEngine {
         this.forces = [];
         this.enabled = true;
 
+        const canvas = Scene.getCanvas();
         this.collisionGrid = new CollisionGrid(canvas.width, canvas.height, 10);
     }
     status() {

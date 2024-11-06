@@ -1,3 +1,8 @@
+import { Scene } from '../iot-engine/core/world-management/Scene.js';
+import { Sand } from '../iot-engine/objects/entities/Sand.js';
+import { Fixture } from '../iot-engine/objects/entities/Fixture.js';
+import { Utils } from '../iot-engine/helpers/Utils.js';
+
 export class GameSimpleBalls extends Scene {
     constructor() {
         Globals.setBoundaries(true);

@@ -1,5 +1,7 @@
+import { Scene } from '../../../core/world-management/Scene.js';
+import { Vector } from '../../../helpers/Vector.js';
 
-export class BasicForms {
+export default class BasicForms {
     constructor() {
         this.vertices = [];
 		this.edges = [];
@@ -17,5 +19,13 @@ export class BasicForms {
 		this.velocity = new Vector(0, 0);
 		this.acceleration = new Vector(0, 0);
         this.acc = new Vector(0, 0);
+
+		const canvas = Scene.getCanvas();
+        if (canvas) {
+			this.canvas = canvas;
+            this.ctx = canvas.getContext('2d');
+        } else {
+            console.error('Failed to get canvas context');
+        }
     }
 }

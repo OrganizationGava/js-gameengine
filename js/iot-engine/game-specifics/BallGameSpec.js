@@ -1,4 +1,9 @@
-class Ball extends BodyDef {
+import { Vector } from '../iot-engine/helpers/Vector.js';
+import { Globals } from '../iot-engine/helpers/Globals.js';
+import { Camera } from '../iot-engine/core/world-management/scene/Camera.js';
+import { BodyDef, BasicForms } from '../Shared.js';
+
+class Ball2 extends BodyDef {
     constructor(rocketFake, position, mass) {
         super(Ball, mass, position, null, null, null);
         this.physics = new Physics(this);
@@ -32,7 +37,7 @@ class Ball extends BodyDef {
 
     reset() {
         this.init();
-    }
+    }   
 
     init() {
         this.velocity = new Vector(0, 0);

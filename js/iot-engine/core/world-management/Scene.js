@@ -1,9 +1,14 @@
 import { Vector } from '../../helpers/Vector.js';
 import { Utils } from '../../helpers/Utils.js';
-import { Globals } from '../../helpers/Globals.js'
-import { HashTable } from '../../helpers/HashSet.js'
-import { PhysicsComplex } from '../world-management/physics/PhysicsComplex.js'
-import { World } from '../world-management/World.js'
+import { Globals } from '../../helpers/Globals.js';
+import { HashTable } from '../../helpers/HashSet.js';
+import { InputUserFieldInteractions } from '../../core/interactions/InputUserFieldInteractions.js';
+
+import { PhysicsComplex } from '../world-management/physics/PhysicsComplex.js';
+import { Camera } from '../../core/world-management/scene/Camera.js';
+
+
+import { World } from '../world-management/World.js';
 
 export class Scene {
     constructor(g) {
@@ -14,33 +19,47 @@ export class Scene {
         this.worlds = new HashTable();
         this.worldsNew = [];
         this.physicsComplex = new PhysicsComplex();
+        this.canvas = Scene.getCanvas();
 
         if (Globals.getBoundaries()) {
             // this.createBoundaries();
         }
     }
 
+    static getCanvas() {
+        if (!this.canvas) {
+            this.canvas = document.getElementById("gameCanvas");
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+            window.addEventListener('resize', () => {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            });
+        }
+        return this.canvas;
+    }
+
     createWorld(n) {
-        this.worlds.set(n, new World(n))
+        this.worlds.set(n, new World(n, this.canvas));
     }
 
     addWorldObj(name, obj) {
-        if( !this.worlds.get(name) ){
-            return ;
+        if (!this.worlds.get(name)) {
+            return;
         }
 
         const w = this.worlds.get(name);
         w.addObject(obj);
 
-        this.worlds.set(name, w)
+        this.worlds.set(name, w);
     }
 
     getWorldObjs(name) {
-        if( !this.worlds ){
+        if (!this.worlds) {
             return [];
         }
 
-        if( !this.worlds.get(name) ){
+        if (!this.worlds.get(name)) {
             return [];
         }
 
@@ -48,12 +67,15 @@ export class Scene {
     }
 
     createUserInteractions() {
-        this.inputUserInteractions = InputUserFieldInteractions.enableInputModification(game);
+        if (!this.game) {
+            console.error("Game instance is not defined.");
+            return;
+        }
+        this.inputUserInteractions = InputUserFieldInteractions.enableInputModification(this.game);
     }
 
-    createMap() {
-        this.map = new MapGame(this);
-        this.map = new MapGame(this);
+    createMap(mapGame) {
+        this.map = mapGame;
     }
 
     createCamera() {
@@ -96,7 +118,7 @@ export class Scene {
             c.verifyCollision(deltaTime);
         }
 
-        if( eventshelper )
+        if (eventshelper)
             eventshelper.resetLoop();
     }
 
@@ -106,5 +128,22 @@ export class Scene {
         for (let c of this.worlds.getAllObjects()) {
             c.draw();
         }
+    }
+
+    userInteractions() {
+        const thatGame = this;
+
+        canvas.addEventListener('click', function (e) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = (e.clientX - rect.left) * (canvas.width / rect.width);
+            const mouseY = (e.clientY - rect.top) * (canvas.height / rect.height);
+            const mousePos = new Vector(mouseX, mouseY);
+            thatGame.selectObjectFromMousePos(mousePos);
+        }, false);
+
+    }
+
+    resize() {
+        game.setScreen();
     }
 }

@@ -1,22 +1,15 @@
-import {Engine} from './iot-engine/core/Engine.js';
-import {Interactions} from './iot-engine/core/interactions/Interections.js';
-// import {CellEvolutionGame} from './games/CellEvolutionGame.js';
-import {RocketFakeGameImp as GameMain} from './games/GameOldPlaye2r.js';
-let canvas = null;
+import { initializeCanvas, getCanvas } from './iot-engine/core/CanvasModule.js';
+import { Engine } from './iot-engine/core/Engine.js';
+import { Interactions } from './iot-engine/core/interactions/Interections.js';
+import { RocketFakeGameImp as GameMain } from './games/GameOldPlaye2r.js';
+
 window.addEventListener('DOMContentLoaded', () => {
-    canvas = document.getElementById("gameCanvas");
+    initializeCanvas();
+    const canvas = getCanvas();
     const ctx = canvas.getContext("2d");
-
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
 
     const eventshelper = new Interactions(canvas);
 
-    const game = new Engine(new GameMain());
+    const game = new Engine(new GameMain(canvas));
     game.init();
 });

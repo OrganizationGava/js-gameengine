@@ -1,0 +1,10 @@
+export {default as BodyDef } from './objects/bodies/BodyDef.js';
+export {default as Box } from './objects/entities/Box.js';
+export {default as Ball } from './objects/entities/Ball.js';
+export { default as BasicForms } from './objects/shapes/fundamental/BasicForms.js';
+export { default as Circle } from './objects/shapes/fundamental/Circle.js';
+export { default as Vertex } from './objects/shapes/helpers/ShapeFactory.js';
+export { default as Edge } from './objects/shapes/helpers/ShapeFactory.js';
+export { default as Face } from './objects/shapes/helpers/ShapeFactory.js';
+export { default as ShapeFactory } from './objects/shapes/helpers/ShapeFactory.js';
+export { default as Rectangle } from './objects/shapes/fundamental/Rectangle.js';

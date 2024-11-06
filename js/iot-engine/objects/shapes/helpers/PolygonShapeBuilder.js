@@ -1,3 +1,5 @@
+import { Edge, Face, Vertex } from "./ShapeFactory.js";
+
 export class PolygonShapeBuilder {
 	static createBox(position){
 		let vertices = [];

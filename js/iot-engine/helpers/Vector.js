@@ -255,4 +255,8 @@ export class Vector {
         ctx.stroke();
         ctx.closePath();
     }
+
+    normal() {
+        return new Vector(-this.y, this.x);
+    }
 }

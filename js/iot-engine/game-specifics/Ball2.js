@@ -1,6 +1,5 @@
-import { BodyDef } from './../bodies/BodyDef';
-
-export class Ball extends BodyDef {
+import { BodyDef } from '../Shared.js';
+export class Ball2 extends BodyDef {
     constructor(rocketFake, position) {
         super(Ball, 100, position, null, null, null);
         this.gamePhysics = new Physics(this);

@@ -1,15 +1,21 @@
+import { Vector } from '../../helpers/Vector.js';
+import { PolygonShapeBuilder } from '../shapes/helpers/PolygonShapeBuilder.js';
 
-export class PolygonShape extends BodyDef {
+export class PolygonShape {
 	constructor(polygon, rocketFake, type, position, mass) {
-		super(PolygonShape, mass, position, null, null, null);
+		import('../bodies/BodyDef.js').then(({ BodyDef }) => {
+			const bodyDefInstance = new BodyDef(PolygonShape, mass, position, null, null, null);
+			this.initializePolygonShape(bodyDefInstance, polygon, rocketFake, type);
+		});
+	}
 
+	initializePolygonShape(bodyDefInstance, polygon, rocketFake, type) {
 		this.rocketFake = rocketFake;
 		this.polygon = polygon;
 		this.shape = this;
 		this.engine = null;
 
 		this.vertices = [];
-
 		this.edges = [];
 		this.faces = [];
 
@@ -375,7 +381,7 @@ export class PolygonShape extends BodyDef {
 
 		if (smallestAxis) {
 			// Calculate the direction from the polygon's center to the circle's center
-			let centerPolygon = this.getCenter(); // Assuming you have a method to get the center of the polygon
+			let centerPolygon = this.getCenter();
 			let directionToCircle = circle.position.subtract(centerPolygon).normalize();
 
 			// Ensure the impulse is in the correct direction

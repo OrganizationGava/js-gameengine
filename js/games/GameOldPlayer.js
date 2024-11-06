@@ -1,4 +1,9 @@
-class Ball extends BodyDef {
+import { Globals } from '../iot-engine/helpers/Globals.js';
+import { Vector } from '../iot-engine/helpers/Vector.js';
+import { Scene } from '../iot-engine/core/world-management/Scene.js'; 
+import { BodyDef, Box, Ball } from '../iot-engine/Shared.js';
+
+export default class GameOldPlayer extends BodyDef {
     constructor(rocketFake, position) {
         super(Ball, 100, position, null, null, null);
         this.gamePhysics = new Physics(this);

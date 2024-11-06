@@ -1,3 +1,5 @@
+import { Vector } from '../../../helpers/Vector.js';
+
 export class Camera {
   constructor(rocket, cx = 0, cy = 0) {
     this.rocket = rocket;

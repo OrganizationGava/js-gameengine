@@ -1,7 +1,9 @@
-import { Scene } from '../iot-engine/core/world-management/Scene.js';
+import { Globals } from '../iot-engine/helpers/Globals.js';
 import { Vector } from '../iot-engine/helpers/Vector.js';
 import { Utils } from '../iot-engine/helpers/Utils.js';
-import { Globals } from '../iot-engine/helpers/Globals.js';
+import { Fixture } from '../iot-engine/core/world-management/physics/helpers/Fixture.js';
+import { Scene } from '../iot-engine/core/world-management/Scene.js';
+import { BodyDef, Box, Ball } from '../iot-engine/Shared.js';
 
 const keys = {
     d: {
@@ -41,7 +43,7 @@ export class RocketFakeGameImp extends Scene {
         var fixPol = new Fixture(box, 1);
         box.addFixture(fixPol);
 
-        var box2 = new Box(this, new Vector(320, 220));
+        var box2 = new Box(this, new Vector(320, 220), 100, 100, 0);
         var fixPol2 = new Fixture(box2, 1);
         box2.addFixture(fixPol2);
 

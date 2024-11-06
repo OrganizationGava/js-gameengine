@@ -1,3 +1,5 @@
+import { BodyDef } from "../bodies/BodyDef";
+
 export class Ground extends BodyDef {
     constructor(rocketFake, mass, start, end) {
         super(Ground, mass, start);

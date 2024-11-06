@@ -1,3 +1,4 @@
+import { BodyDef } from '../Shared.js';
 export class Wall extends BodyDef {
     constructor(rocketFake, x1, y1, x2, y2){
         super(Wall);

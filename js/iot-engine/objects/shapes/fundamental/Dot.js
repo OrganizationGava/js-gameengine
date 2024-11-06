@@ -1,4 +1,5 @@
 // roundDot.updateFieldUserInstance('shapeType', 'square');
+import { BasicForms } from '../../../Shared.js';
 
 export class Dot extends BasicForms {
     constructor(x, y, size, shapeType = 'round') {

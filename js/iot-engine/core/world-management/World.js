@@ -1,4 +1,5 @@
 import { PhysicsEngine, Physics, Force } from './physics/Physics.js'
+import { PhysicsComplex } from './physics/PhysicsComplex.js'
 
 export class World {
     constructor(name) {

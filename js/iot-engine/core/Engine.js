@@ -1,3 +1,13 @@
+import { Globals } from '../helpers/Globals.js';
+import { Vector } from '../helpers/Vector.js'
+import { Utils } from '../helpers/Utils.js'
+import { Physics } from '../core/world-management/physics/Physics.js';
+import { Camera } from '../core/world-management/scene/Camera.js';
+import { Scene } from '../core/world-management/Scene.js';
+import { BodyDefType } from '../objects/bodies/BodyType.js';
+import { ShapeFactory } from '../Shared.js';
+import { Debugger } from '../helpers/Debugger.js';
+import { Interactions } from '../core/interactions/Interections.js'
 export class Engine {
     fpsHelper = 0;
     fps = 60;
@@ -10,6 +20,14 @@ export class Engine {
     mousePos = new Vector(0, 0);
 
     constructor(gameObjectType) {
+        const canvas = Scene.getCanvas();
+        if (canvas) {
+			this.canvas = canvas;
+            this.ctx = canvas.getContext('2d');
+        } else {
+            console.error('Failed to get canvas context');
+        }
+
         Globals.setBoundaries(true);
         Globals.setCollisions(true);
         Globals.setDebug(false);
@@ -92,7 +110,7 @@ export class Engine {
 
     draw() {
         if (this.gameObjectType.ctxClearScreen) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            this.ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
         this.gameObjectType.draw();
 
@@ -100,16 +118,16 @@ export class Engine {
     }
 
     addText(t, x, y, size, color) {
-        ctx.fillStyle = color;
-        ctx.font = `bold ${size}px Arial`;
-        ctx.fillText("FPS: " + t + ".00", x, y);
+        this.ctx.fillStyle = color;
+        this.ctx.font = `bold ${size}px Arial`;
+        this.ctx.fillText("FPS: " + t + ".00", x, y);
     }
 
     setScreen() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        canvas.centerX = canvas.width / 2;
-        canvas.centerY = canvas.height / 2;
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.canvas.centerX = this.canvas.width / 2;
+        this.canvas.centerY = this.canvas.height / 2;
     }
 
     userInteractions() {

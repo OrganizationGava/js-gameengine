@@ -1,3 +1,9 @@
+import { Vector } from '../iot-engine/helpers/Vector.js';
+import { Globals } from '../iot-engine/helpers/Globals.js';
+import { Camera } from '../iot-engine/core/world-management/scene/Camera.js'; 
+import { BasicForms } from '../objects/shapes/fundamental/BasicForms.js';
+import { BodyDef } from '../Shared.js';
+
 export class Sand extends BodyDef {
 	constructor(rocketFake, x, y, mass, size) {
 		super(Sand, mass, new Vector(x, y));

@@ -1,12 +1,18 @@
-export class Ball extends BodyDef {
-    constructor(rocketFake, mass, radius, position) {
-        super(Ball, mass, position);
-        this.setBodyType('dynamic');
+import { Physics } from '../../core/world-management/physics/Physics.js';
+import { Vector } from '../../helpers/Vector.js';
+import { BodyDef, Circle } from '../../Shared.js';
 
-        this.rocketFake = rocketFake;
+export default class Ball extends BodyDef {
+    constructor(rocketFake, position, mass) {
+        super(Ball, mass, position, null, null, null);
         this.physics = new Physics(this);
+
+        this.setBodyType('dynamic');
+        this.createShape('circle');
+        this.rocketFake = rocketFake;
+
         this.color = "black";
-        this.shape = new Circle(new Vector(position.x, position.y), radius);
+        this.shape = new Circle(new Vector(position.x, position.y), 10);
 
         this.bounce = 0;
         this.friction = 0.1;
